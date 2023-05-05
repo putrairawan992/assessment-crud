@@ -21,7 +21,7 @@ const HttpService = () => {
   const _instance: AxiosInstance = axios.create({
     baseURL,
     headers: {
-        Authorization: `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE2ODI5NDIwMDEsImlhdCI6MTY4Mjg1NTYwMSwic3ViIjoxNzJ9.cvqOQOXbo3RzeEvmayYcZRqbRCRdfPx408TKWPbJMGU`
+        Authorization: `Bearer ${process.env.NEXT_PUBLIC_BEARER}`
     }
   });
   // const _instance: AxiosInstance = axios.create();
@@ -87,7 +87,7 @@ const HttpService = () => {
    * @param   { string }    token    Contains the token value
    */
   function setDefaultToken(token: string) {
-    _instance.defaults.headers.common.Authorization = `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE2ODI5NDIwMDEsImlhdCI6MTY4Mjg1NTYwMSwic3ViIjoxNzJ9.cvqOQOXbo3RzeEvmayYcZRqbRCRdfPx408TKWPbJMGU`;
+    _instance.defaults.headers.common.Authorization = `Bearer ${process.env.NEXT_PUBLIC_BEARER}`;
   }
 
   /**
