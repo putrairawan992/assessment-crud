@@ -12,27 +12,41 @@ yarn dev
 pnpm dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Test Logika dan Algoritma
 
-You can start editing the page by modifying `pages/index.tsx`. The page auto-updates as you edit the file.
+Deret Angka
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.ts`.
+```
+function deretAngka(n) {
+  const kata1 = 'NAR'
+  const kata2 = 'UTO'
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+  let hasilDeretAngka = ''
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+  for (let i = 1; i <= n; i++) {
+    if (i % 5 === 0 && i % 3 === 0) hasilDeretAngka += `${kata1}${kata2} `
+    if (i % 3 === 0) hasilDeretAngka += `${kata1} `
+    if (i % 5 === 0) hasilDeretAngka += `${kata2} `
+  }
 
-## Learn More
+  return hasilDeretAngka
+}
+```
+Hitung Karakter Paragraph
+```
+function hitungKarakter(n) {
+  let karakter = n
 
-To learn more about Next.js, take a look at the following resources:
+  return karakter?.length
+}
+```
+Format String
+```
+function split(str) {
+  return str.
+    split(' ').
+    map(w => w[0].toUpperCase() + w.substr(1).toLowerCase()).
+    join(' ');
+}
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
