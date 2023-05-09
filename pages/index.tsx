@@ -41,6 +41,7 @@ const Home = (props: HomeInterface) => {
   const [openModalDetail, setOpenModalDetail] = useState<boolean>(false);
   const [viewMode, setViewMode] = useState<boolean>(false);
   const [selectedId, setSelectedId] = useState<number>(0);
+  const [isShowLoading,setIsShowLoading] = useState<boolean>(false);
 
   const columns: ColumnsType<DataUser> = [
     {
@@ -121,6 +122,7 @@ const Home = (props: HomeInterface) => {
   }, [user.detailUser]);
 
   const handleSave = () => {
+    setIsShowLoading(true);
     form.validateFields()
       .then((val) => {
         const formData = {
@@ -130,7 +132,7 @@ const Home = (props: HomeInterface) => {
           born_date: val.birthdate.format("YYYY-MM-DD"),
         }
         onCreateDataUser(formData);
-        
+        setIsShowLoading(false);
         setOpenModalCreate(false);
       })
   }
@@ -141,7 +143,7 @@ const Home = (props: HomeInterface) => {
       MessageHandler().error("You're in view mode");
       return false;
     }
-
+  setIsShowLoading(true);
     formUpdate.validateFields()
       .then((val) => {
         const formData = {
@@ -152,7 +154,7 @@ const Home = (props: HomeInterface) => {
           born_date: moment(val.birthdate).format("YYYY-MM-DD"),
         }
         onUpdateDataUser(formData);
-        
+        setIsShowLoading(false);
         setOpenModalDetail(false);
       })
   }
@@ -248,7 +250,7 @@ const Home = (props: HomeInterface) => {
         setViewMode(false);
       }} onOk={() => {
         handleUpdate();
-      }} okText="Save" confirmLoading={true}>
+      }} okText="Save" confirmLoading={isShowLoading}>
         <Form form={formUpdate} layout='vertical'>
           <Form.Item
             name="name"
